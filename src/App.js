@@ -1,55 +1,29 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
-import detect from './resources/script/detect.js';
-import infoHero from './resources/script/infoHero.js'
-
-import SliderCard from './components/sliderCard/SliderCard.js';
-import Card from './components/card/Card.js'
+import Mode from './components/mode/Mode';
+import PlayingFiend from './components/playingField/PlayingField';
 
 import './App.scss';
 
 function App() {
 
-  const [openCard, setOpenCard] = useState('null');
+  const [numberPlayers, setNumberPlayers] = useState(0);
+  const [start, setStart] = useState(false);
+  const [namePlayers, setNamePlayers] = useState(['Player']);
 
-  const onOpenCard = (name)=>{
-    setOpenCard(`${name}`);
-  }
-
-  switch (openCard) {
-    case 'null':
-      return (
-        <div className='wrapper'>
-          <SliderCard openCard={onOpenCard}/>
-        </div>
-      )
-      break;
-  
-    case 'meg':
-      return (
-        <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[0].id} text={infoHero[0].text} music={infoHero[0].music} clouseCard={onOpenCard}/>
-        </motion.div>
-      )
-      break;
-
-    case 'kaz':
-      return (
-        <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[1].id} text={infoHero[1].text} music={infoHero[1].music} clouseCard={onOpenCard}/>
-        </motion.div>
-      )
-    break;
-
-    case 'dark':
-      return (
-        <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[2].id} text={infoHero[2].text} music={infoHero[2].music} clouseCard={onOpenCard}/>
-        </motion.div>
-      )
-    break;
+  if(start){
+    return (
+      <div className='wrapper'>
+        <PlayingFiend numberPlayers={numberPlayers} namePlayers={namePlayers} setStart={setStart}/>
+      </div>
+    )
+  } else {
+    return (
+      <div className='wrapper'>
+        <Mode setNumberPlayers={setNumberPlayers} setNamePlayers={setNamePlayers} start={setStart}/>
+      </div>
+    )
   }
 }
 
-export default App
+export default App;
