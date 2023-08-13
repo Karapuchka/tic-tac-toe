@@ -9,12 +9,12 @@ function App() {
 
   const [numberPlayers, setNumberPlayers] = useState(0);
   const [start, setStart] = useState(false);
-  const [namePlayers, setNamePlayers] = useState(['Player']);
+  const [namePlayers, setNamePlayers] = useState([{name: 'Первый игрок', role: ''}, {name: 'Второй игрок', role: ''}]);
 
   if(start){
     return (
       <div className='wrapper'>
-        <PlayingFiend numberPlayers={numberPlayers} namePlayers={namePlayers} setStart={setStart}/>
+        <PlayingFiend numberPlayers={numberPlayers} namePlayers={namePlayers} setStart={setStart} setNamePlayers={setNamePlayers}/>
       </div>
     )
   } else {

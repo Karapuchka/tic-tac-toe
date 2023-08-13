@@ -19,9 +19,7 @@ function EnterNamePlayers({setNamePlayers, page, start}){
             localStorage.setItem('numberPlayers', '1')
             localStorage.setItem('namePlayer', namePlayerOne);
 
-            if(namePlayerOne === '') setNamePlayerOne('Первый игрок');
-
-            setNamePlayers([namePlayerOne]);
+            setNamePlayers([{name: namePlayerOne, role: ''}, {name: 'ИИ', role: ''}]);
 
         } else {
 
@@ -29,16 +27,14 @@ function EnterNamePlayers({setNamePlayers, page, start}){
             localStorage.setItem('namePlayerOne', namePlayerOne);
             localStorage.setItem('namePlayerTwo', namePlayerTwo);
 
-            if(namePlayerOne === '') setNamePlayerOne('Первый игрок');
-            if(namePlayerTwo === '') setNamePlayerTwo('Второй игрок');
-
-            setNamePlayers([namePlayerOne, namePlayerTwo]);
+            setNamePlayers([{name: namePlayerOne, role: ''}, {name: namePlayerTwo, role: ''}]);
             
         }
 
         setLife(false)
 
         start(true);
+
     }
 
     if(page === 'player'){
@@ -46,7 +42,7 @@ function EnterNamePlayers({setNamePlayers, page, start}){
             <AnimatePresence> {life && 
                      <motion.section initial={{opacity: 0, y: 5}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -5}} transition={{duration: 1}} className="mode container">
                      
-                         <header className="mode__title">Укажите именя игрока</header>
+                         <header className="mode__title">Укажите имя игрока</header>
      
                          <main className="mode__main">
                              
@@ -85,7 +81,7 @@ function EnterNamePlayers({setNamePlayers, page, start}){
             <AnimatePresence> {life && 
                      <motion.section initial={{opacity: 0, y: 5}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -5}} transition={{duration: 1}} className="mode container">
                      
-                         <header className="mode__title">Укажите имена игроков</header>
+                         <header className="mode__title">Укажите имя игроков</header>
      
                          <main className="mode__main">
                              

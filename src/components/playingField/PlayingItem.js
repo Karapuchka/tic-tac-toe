@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import './playingFiend.scss';
 
-function PlayingItem({setRole, role, playerRole, indexItem, arrayItems}){
+function PlayingItem({setRole, role, playerRole, indexItem, arrayItems, setPlayerRole, onValidWin}){
 
     const [roleItem, setRoleItem] = useState(role);
 
@@ -17,7 +17,11 @@ function PlayingItem({setRole, role, playerRole, indexItem, arrayItems}){
 
             setRole(newArray);
 
-            setRoleItem('X')
+            setRoleItem('X');
+
+            setPlayerRole('circle');
+
+            onValidWin('X');
 
         } else if (playerRole === 'circle'){
 
@@ -25,7 +29,12 @@ function PlayingItem({setRole, role, playerRole, indexItem, arrayItems}){
 
             setRole(newArray);
 
-            setRoleItem('O')
+            setRoleItem('O');
+
+            setPlayerRole('cross');
+
+            onValidWin('O');
+
         }
 
         localStorage.setItem('gamePosition', arrayItems)
@@ -44,10 +53,11 @@ function PlayingItem({setRole, role, playerRole, indexItem, arrayItems}){
 
         return (
             <li className='playing__main__item'>
-               <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .7}}  className='playing__cross'>
+                <motion.div whileTap={{opacity: 1}} transition={{duration: .2}} className='playing__main__item__border-error'></motion.div>
+                <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .7}}  className='playing__cross'>
                     <span className='playing__cross-left'></span>
                     <span className='playing__cross-right'></span>
-               </motion.div>
+                </motion.div>
             </li>
         )
 
