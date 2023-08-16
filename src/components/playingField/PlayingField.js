@@ -30,19 +30,19 @@ function PlayingFiend({numberPlayers, namePlayers, setStart, setNamePlayers}) {
            (arrayItems[3] === value && arrayItems[4] === value && arrayItems[5] === value) ||
            (arrayItems[6] === value && arrayItems[7] === value && arrayItems[8] === value)){
 
-            setWinner(value);    
-        }
 
-        if(arrayItems[0] != '' && arrayItems[1] != '' && arrayItems[2] != '' &&
-           arrayItems[0] != '' && arrayItems[3] != '' && arrayItems[6] != '' && 
-           arrayItems[0] != '' && arrayItems[4] != '' && arrayItems[8] != '' &&
-           arrayItems[1] != '' && arrayItems[4] != '' && arrayItems[7] != '' &&
-           arrayItems[2] != '' && arrayItems[4] != '' && arrayItems[6] != '' &&
-           arrayItems[2] != '' && arrayItems[5] != '' && arrayItems[8] != '' &&
-           arrayItems[3] != '' && arrayItems[4] != '' && arrayItems[5] != '' &&
-           arrayItems[6] != '' && arrayItems[7] != '' && arrayItems[8] != ''){
+            setWinner(value);    
+        } else if (arrayItems[0] != '' && arrayItems[1] != '' && arrayItems[2] != '' &&
+                   arrayItems[0] != '' && arrayItems[3] != '' && arrayItems[6] != '' && 
+                   arrayItems[0] != '' && arrayItems[4] != '' && arrayItems[8] != '' &&
+                   arrayItems[1] != '' && arrayItems[4] != '' && arrayItems[7] != '' &&
+                   arrayItems[2] != '' && arrayItems[4] != '' && arrayItems[6] != '' &&
+                   arrayItems[2] != '' && arrayItems[5] != '' && arrayItems[8] != '' &&
+                   arrayItems[3] != '' && arrayItems[4] != '' && arrayItems[5] != '' &&
+                   arrayItems[6] != '' && arrayItems[7] != '' && arrayItems[8] != ''){
             setWinner('Ничья'); 
         }
+        console.log(arrayItems);
     }
 
     if(numberPlayers === 1){

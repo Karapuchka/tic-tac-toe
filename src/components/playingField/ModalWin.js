@@ -10,6 +10,10 @@ function ModalWin({winner, namePlayers, setStart}){
     const onExitModal = ()=>{
         setLife(false);
         setStart(false);
+
+        console.log(winner);
+        console.log(namePlayers[0].role);
+        console.log(namePlayers[1].role);
     }
 
     if(winner === 'Ничья'){

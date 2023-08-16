@@ -18,50 +18,46 @@ function ModalRole({setStart, setRole, setNamePlayers, numberPlayers, namePlayer
         
         let newObj = Object.assign(namePlayers);
 
-        if(numberPlayers === 1){
-            newObj[0].role = value[0];
-            newObj[1].role = value[1];
-            setNamePlayers(newObj);
-        } 
+        newObj[0].role = value[0];
+        newObj[1].role = value[1];
+        setNamePlayers(newObj);
     }
 
-    if(numberPlayers === 1){
-        return (
-            <AnimatePresence >{ life &&
-                    <div className='modal'>
-    
-                        <section className='modal__container'>
-    
-                            <header className='modal__header'>Выберите роль</header>
-    
-                            <main className='modal__main'>
-    
-                                <div className='modal__main__btn'>
-    
-                                    <motion.div onClick={()=> onAddRole(['X', 'O'])} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .7}}  className='modal__main__cross'>
-                                        <span className='modal__main__cross-left'></span>
-                                        <span className='modal__main__cross-right'></span>
-                                    </motion.div>
-    
-                                </div>
-    
-                                <div className='modal__main__btn'>
-                                    <div onClick={()=> onAddRole(['O', 'X'])} className='modal__main__btn__circle'></div>
-                                </div>
-    
-                            </main>
-    
-                            <footer className='modal__footer'>
-                                <button onClick={()=> onExitModal()} type='button' className='modal__footer__btn-exit'>Выйти</button>
-                            </footer>
-    
-                        </section>
-    
-                    </div>
-                }
-            </AnimatePresence>
-        )
-    }
+    return (
+        <AnimatePresence >{ life &&
+                <div className='modal'>
+
+                    <section className='modal__container'>
+
+                        <header className='modal__header'>{numberPlayers === 1 ? 'Выберите роль' : `Игрок ${namePlayers[0].name}`}</header>
+
+                        <main className='modal__main'>
+
+                            <div className='modal__main__btn'>
+
+                                <motion.div onClick={()=> onAddRole(['X', 'O'])} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .7}}  className='modal__main__cross'>
+                                    <span className='modal__main__cross-left'></span>
+                                    <span className='modal__main__cross-right'></span>
+                                </motion.div>
+
+                            </div>
+
+                            <div className='modal__main__btn'>
+                                <div onClick={()=> onAddRole(['O', 'X'])} className='modal__main__btn__circle'></div>
+                            </div>
+
+                        </main>
+
+                        <footer className='modal__footer'>
+                            <button onClick={()=> onExitModal()} type='button' className='modal__footer__btn-exit'>Выйти</button>
+                        </footer>
+
+                    </section>
+
+                </div>
+            }
+        </AnimatePresence>
+    )
 }
 
 export default ModalRole;
