@@ -1,15 +1,20 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useSound from 'use-sound';
 
+import clickSound from '../../resources/music/click-sound.mp3';
 import './playingFiend.scss';
 
-function ModalRole({setStart, setRole, setNamePlayers, numberPlayers, namePlayers}){
+function ModalRole({setStart, setRole, setNamePlayers, namePlayers}){
+
+    const [playClickSound] = useSound(clickSound);
 
     const [life, setLife] = useState(true);
 
     const onExitModal = ()=>{
         setLife(false);
         setStart(false);
+        playClickSound();
     }
 
     const onAddRole = (value)=> {
@@ -21,6 +26,7 @@ function ModalRole({setStart, setRole, setNamePlayers, numberPlayers, namePlayer
         newObj[0].role = value[0];
         newObj[1].role = value[1];
         setNamePlayers(newObj);
+        playClickSound();
     }
 
     return (
@@ -29,7 +35,7 @@ function ModalRole({setStart, setRole, setNamePlayers, numberPlayers, namePlayer
 
                     <section className='modal__container'>
 
-                        <header className='modal__header'>{numberPlayers === 1 ? 'Выберите роль' : `Игрок ${namePlayers[0].name}`}</header>
+                        <header className='modal__header'>{`Игрок ${namePlayers[0].name} выбирает роль`}</header>
 
                         <main className='modal__main'>
 
@@ -49,7 +55,7 @@ function ModalRole({setStart, setRole, setNamePlayers, numberPlayers, namePlayer
                         </main>
 
                         <footer className='modal__footer'>
-                            <button onClick={()=> onExitModal()} type='button' className='modal__footer__btn-exit'>Выйти</button>
+                            <motion.button whileHover={{color: 'red'}} onClick={()=> onExitModal()} type='button' className='modal__footer__btn'>Выйти</motion.button>
                         </footer>
 
                     </section>

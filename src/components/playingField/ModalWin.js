@@ -1,19 +1,30 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useSound from 'use-sound';
 
+import clickSound from '../../resources/music/click-sound.mp3';
 import './playingFiend.scss';
 
 function ModalWin({winner, namePlayers, setStart}){
+
+    const [playClickSound] = useSound(clickSound);
 
     const [life, setLife] = useState(true);
 
     const onExitModal = ()=>{
         setLife(false);
         setStart(false);
+        playClickSound();
+    }
 
-        console.log(winner);
-        console.log(namePlayers[0].role);
-        console.log(namePlayers[1].role);
+    const onReplay = ()=> {
+        setLife(false);
+        setStart(false);
+        playClickSound();
+
+        setTimeout(()=>{
+            setStart(true);
+        }, 1);
     }
 
     if(winner === 'Ничья'){
@@ -24,9 +35,13 @@ function ModalWin({winner, namePlayers, setStart}){
                         <section className='modal__container modal__container--min-size'>
     
                             <header className='modal__header'>Ничья</header>
+
+                            <main classNmae='modal__main'>
+                            </main>
     
                             <footer className='modal__footer'>
-                                <button onClick={()=> onExitModal()} type='button' className='modal__footer__btn-exit'>Выйти</button>
+                                <motion.button whileHover={{color: 'red'}} onClick={()=> onReplay()} type='button' className='modal__footer__btn'>Переиграть?</motion.button>
+                                <motion.button whileHover={{color: 'red'}} onClick={()=> onExitModal()} type='button' className='modal__footer__btn'>Выйти</motion.button>
                             </footer>
     
                         </section>
@@ -51,7 +66,8 @@ function ModalWin({winner, namePlayers, setStart}){
                             </main>
     
                             <footer className='modal__footer'>
-                                <button onClick={()=> onExitModal()} type='button' className='modal__footer__btn-exit'>Выйти</button>
+                                <motion.button whileHover={{color: 'red'}} onClick={()=> onReplay()} type='button' className='modal__footer__btn'>Переиграть?</motion.button>
+                                <motion.button whileHover={{color: 'red'}} onClick={()=> onExitModal()} type='button' className='modal__footer__btn'>Выйти</motion.button>
                             </footer>
     
                         </section>

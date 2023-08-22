@@ -244,6 +244,8 @@
 
         font-size: 24px;
         font-weight: 600;
+
+        text-align: center;
     }
 
     &__main{
@@ -328,12 +330,46 @@
     }
 
     &__footer{
-        &__btn-exit{
+        display: flex;
+        flex-direction: column;
+
+        &__btn{
+            cursor: pointer;
+
             font-size: 18px;
 
             background-color: transparent;
 
-            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+
+            transition: all .7s ease;
+            border-bottom: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .modal{
+   
+        &__container{
+    
+            width: 250px;
+            height: 250px;
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+    
+            border-radius: 20px;
+            border: 2px solid black;
+    
+            background-color: white;
+        }
+    
+        &__container--min-size{
+            height: 200px;
+            width: 300px;
         }
     }
 }
