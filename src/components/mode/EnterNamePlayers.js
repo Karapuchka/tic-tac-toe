@@ -47,7 +47,7 @@ function EnterNamePlayers({setNamePlayers, page, start}){
         <AnimatePresence> {life && 
                  <motion.section initial={{opacity: 0, y: 5}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -5}} transition={{duration: 1}} className="mode container">
                  
-                     <header className="mode__title">Укажите имя игроков</header>
+                     <header className="mode__title">Укажите имена игроков</header>
  
                      <main className="mode__main">
                          
